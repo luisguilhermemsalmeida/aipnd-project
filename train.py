@@ -16,7 +16,6 @@ import argparse
 def train(data_directory, save_dir, is_gpu_available, model_architecture, learning_rate, hidden_units, epochs):
     train_dir = data_directory + '/train'
     validation_dir = data_directory + '/valid'
-    # Define your transforms for the training and validation
     data_transforms = {
         'train': transforms.Compose([
             transforms.Resize((256, 256)),
@@ -155,7 +154,7 @@ def get_parameters():
                     default='densenet121',
                     dest='model_architecture',
                     type=str,
-                    help='Model architecture, defaults to densenet121')
+                    help='Model architecture, must be one of ["densenet121", "vgg13"]. Defaults to densenet121')
     
     parser.add_argument('--learning_rate ', action='store',
                     default=0.03,
